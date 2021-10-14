@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en-US">
+<!--
+    Jacob Wolniak
+    Web Programming
+    Map Mania v2
+    October 11, 2021
+-->
+    <head>
+        <meta charset="utf-8">
+        <title>Map Mania</title>
+        <link rel="stylesheet" href="format.css">
+        <script src="index.js"></script>
+        <style>
+            #myMapID {
+                height: 100%;
+                width: 100%;
+            }
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body onload="initApplication()">
+        <h1>Map Mania v2</h1>
+        <div id ="myMapID"></div>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6WC3H-mIZrRxV6UVkWEYoyd5RFeX2PA8&callback=initMap&v=weekly"
+        async
+        ></script>
+    </body>
+</html>
