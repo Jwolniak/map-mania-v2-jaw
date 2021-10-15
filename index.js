@@ -22,6 +22,7 @@ function initApplication() {
 }
 function initMap() {
     window.alert("Hello! Welcome to Jacob's Map Mania game! Here you will try to figure out\nmy 10 favorite places that I have been to. You can zoom in by double clicking on the map.\nHints will be given if you move away from the place you are looking for. There is a cheat code\nthat will give you an automatic win. Click on the Winner button to win.");
+    hint = "All of my favorite places are located in North America.";
     myMap = new google.maps.Map(document.getElementById("myMapID"), {
         center: {lat: 0, lng: 0},
         zoom: 4,
@@ -65,4 +66,8 @@ function setHint(hint){
 
 function setScore() {
     document.getElementById("score").value = score;
+}
+
+function winningScore() {
+    score = 10;
 }
