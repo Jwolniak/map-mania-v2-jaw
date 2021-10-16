@@ -54,6 +54,13 @@ function updateGame() {
     if (inBounds == true && zoomLevel == 12){
         score = score + 1;
     }
+    if (inBounds == false && zoomLevel == 12){
+        hint = "Try to move in a different direction."
+    } else if (inBounds == true && zoomLevel != 12){
+        hint = "Try zooming in more."
+    } else{
+        hint = "Make sure you are looking in North America."
+    }
     if (score == 10){
         window.alert("Congratulations! You have found my favorite places!");
     }
