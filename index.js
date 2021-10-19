@@ -23,6 +23,7 @@ function initApplication() {
 function initMap() {
     window.alert("Hello! Welcome to Jacob's Map Mania game! Here you will try to figure out\nmy 10 favorite places that I have been to. You can zoom in by double clicking on the map.\nHints will be given if you move away from the place you are looking for. There is a cheat code\nthat will give you an automatic win. Click on the Winner button to win.\nClick on the OK button when you are ready to begin.");
     hint = "All of my favorite places are located in North America.";
+    setHint(hint);
     myMap = new google.maps.Map(document.getElementById("myMapID"), {
         center: {lat: 0, lng: 0},
         zoom: 4,
@@ -51,34 +52,35 @@ function updateGame() {
     if (myMap.getBounds().contains(currentLocation)) {
         inBounds = true;
     }
+    console.log("inbounds:"+inBounds+" zoomLevel:"+zoomLevel);
+    setHint(hint,inBounds,zoomLevel);
     if (inBounds == true && zoomLevel == 12){
         score = score + 1;
         setScore(score);
+        locationIndex = locationIndex + 1;
     }
-    if (inBounds == false && zoomLevel == 12){
-        hint = "Try to move in a different direction.";
-        setHint(hint);
-    } else if (inBounds == true && zoomLevel != 12){
-        hint = "Try zooming in more.";
-        setHint(hint);
-    } else{
-        hint = "Make sure you are looking in North America.";
-        setHint(hint);
-    }
-    if (score == 10){
-        window.alert("Congratulations! You have found my favorite places!");
-    }
-    console.log("inbounds:"+inBounds+" zoomLevel:"+zoomLevel);
+    setScore(score);
 }
 
-function setHint(hint){
+function setHint(hint, inBounds, zoomLevel){
     document.getElementById("hint").value = hint;
+    if (inBounds == false && zoomLevel == 12){
+        hint = "Try to move in a different direction.";
+    } else if (inBounds == true && zoomLevel != 12){
+        hint = "Try zooming in more.";
+    } else{
+        hint = "Make sure you are looking in North America.";
+    }
 }
 
 function setScore() {
     document.getElementById("score").value = score;
+    if (score == 10){
+        window.alert("Congratulations! You have found my favorite places!");
+    }
 }
 
 function winningScore() {
     score = 10;
+    setScore(score);
 }
