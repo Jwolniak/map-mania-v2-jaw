@@ -58,6 +58,7 @@ function updateGame() {
         score = score + 1;
         setScore(score);
         locationIndex = locationIndex + 1;
+        return score;
     }
     setScore(score);
 }
@@ -66,10 +67,13 @@ function setHint(hint, inBounds, zoomLevel){
     document.getElementById("hint").value = hint;
     if (inBounds == false && zoomLevel == 12){
         hint = "Try to move in a different direction.";
+        return hint;
     } else if (inBounds == true && zoomLevel != 12){
         hint = "Try zooming in more.";
+        return hint;
     } else{
         hint = "Make sure you are looking in North America.";
+        return hint;
     }
 }
 
